@@ -346,6 +346,7 @@
                 '<(libchromiumcontent_library_dir)/libffmpegsumo.so',
                 '<(libchromiumcontent_resources_dir)/icudtl.dat',
                 '<(libchromiumcontent_resources_dir)/content_shell.pak',
+                'deps/libudev.so.0',
               ],
             },
           ],
@@ -403,7 +404,7 @@
               # Make binary search for libraries under current directory, so we
               # don't have to manually set $LD_LIBRARY_PATH:
               # http://serverfault.com/questions/279068/cant-find-so-in-the-same-directory-as-the-executable
-               '-rpath \$$ORIGIN',
+               '-rpath ./',
               # Make native module dynamic loading work.
                '-rdynamic',
              ],
