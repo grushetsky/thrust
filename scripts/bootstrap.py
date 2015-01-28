@@ -12,9 +12,9 @@ SOURCE_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 VENDOR_DIR = os.path.join(SOURCE_ROOT, 'vendor')
 
 
-def execute(argv):
+def execute(argv, is_shell=False):
   try:
-    return subprocess.check_output(argv, stderr=subprocess.STDOUT)
+    return subprocess.check_output(argv, shell=is_shell, stderr=subprocess.STDOUT)
   except subprocess.CalledProcessError as e:
     print e.output
     raise e
@@ -27,6 +27,7 @@ def main():
   update_submodules()
   bootstrap_brightray(args.url)
   create_chrome_version_h()
+  use_python2([os.path.join(VENDOR_DIR, 'brightray'), os.path.join(VENDOR_DIR, 'depot_tools')])
   update_thrust_shell()
 
 
@@ -51,6 +52,7 @@ def bootstrap_brightray(url):
   execute([sys.executable, bootstrap, '--commit', LIBCHROMIUMCONTENT_COMMIT,
            url])
 
+
 def create_chrome_version_h():
   version_file = os.path.join(SOURCE_ROOT, 'vendor', 'brightray', 'vendor',
                               'libchromiumcontent', 'VERSION')
@@ -66,9 +68,18 @@ def create_chrome_version_h():
     if f.read() != content:
       f.write(content)
 
+
 def update_thrust_shell():
   update = os.path.join(SOURCE_ROOT, 'scripts', 'update.py')
   execute([sys.executable, update])
+
+
+# Change environment to Python 2.x for scripts in certain folders
+def use_python2(folders):
+  folders_str = ''
+  for folder in folders:
+    folders_str = folders_str + ' ' + folder
+  execute([os.path.join(SOURCE_ROOT, 'scripts', 'use-python2.sh'), folders_str], True)
 
 
 if __name__ == '__main__':

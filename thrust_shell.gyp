@@ -203,7 +203,7 @@
       'sk', 'sl', 'sr', 'sv', 'sw', 'ta', 'te', 'th', 'tr', 'uk',
       'vi', 'zh-CN', 'zh-TW',
     ],
-    'thrust_shell_source_root': '<!(python tools/source_root.py)',
+    'thrust_shell_source_root': '<!(python2 tools/source_root.py)',
     'conditions': [
       ['OS=="win"', {
         'app_sources': [
