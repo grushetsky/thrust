@@ -2,7 +2,7 @@
 
 **Chromium-based cross-platform / cross-language application framework**
 
-*Thrust is `require/import`-able, it lets you distribute NodeJS, Go or Python GUI apps directly 
+*Thrust is `require/import`-able, it lets you distribute NodeJS, Go or Python GUI apps directly
 through their native package managers.*
 
 Thrust is based on Chromium's Content Module and is supported on Linux, MacOSX and Windows:
@@ -10,13 +10,12 @@ Thrust is based on Chromium's Content Module and is supported on Linux, MacOSX a
 ![Cross-Platform Screenshots](http://i.imgur.com/7K98jyW.png)
 *Screenshot of Thrust Getting Started example running on each major platform.*
 
-Thrust will be powering the next versions of [Breach](http://breach.cc)
+Thrust will be powering the next versions of [Breach](http://breach.cc).
 
-To better understand what Thrust can do, check out **[JankyBrowser](https://gist.github.com/morganrallen/f07f59802884bcdcad4a)** by 
-@morganrallen, the cross-platform browser that fits in a gist:
+To better understand what Thrust can do, check out [JankyBrowser](https://gist.github.com/LeoColomb/993506f47fe10e234123) by
+@morganrallen (forked by @LeoColomb), the cross-platform browser that fits in a gist:
 ```
-npm install -g \
-  https://gist.github.com/morganrallen/f07f59802884bcdcad4a/download
+npm install -g https://gist.github.com/LeoColomb/993506f47fe10e234123
 ```
 
 #### Table of Contents
@@ -39,8 +38,8 @@ npm install -g \
 ## Language bindings
 
 Thrust's binary distribution exposes its API on the standard IO and language
- specific library packages automatically download the binary distribution at 
-installation. Thrust is based on Chromium's content module and uses web-pages 
+ specific library packages automatically download the binary distribution at
+installation. Thrust is based on Chromium's content module and uses web-pages
 as its GUI.
 
 All these Getting Started example work as is on each major platform (MacOSX,
@@ -53,7 +52,7 @@ Windows, Linux)
 First install with `npm install node-thrust`
 
 ```Javascript
-require('node-thrust')(function(err, api) { 
+require('node-thrust')(function(err, api) {
   api.window({ root_url: 'https://breach.cc' }).show();
 });
 ```
@@ -147,7 +146,7 @@ object Main extends App {
 ***
 ## API Reference
 
-The API reference as well as links to specific language bindings documentations 
+The API reference as well as links to specific language bindings documentations
 are availble in the [docs/](https://github.com/breach/thrust/tree/master/docs)
  directory.
 
@@ -158,16 +157,16 @@ are availble in the [docs/](https://github.com/breach/thrust/tree/master/docs)
 [Thrust Architecture]
 
           (Platform)           [stdio]      (Your Implementation)
-                                                                          
+
                                   #
-               +--------------+   #       +-----------------------+  | 
+               +--------------+   #       +-----------------------+  |
                | Cocoa / Aura |   #   +---|    win3: (HTML/JS)    |  |
                +-------+------+   #   |  +-----------------------++  |
                        |          #   +--|    win2: (HTML/JS)    |   | cli
 +------------+ +-------+------+   #   | +-----------------------++   |
 |            +-+ thrust (C++) +-------+-+    win1: (HTML/JS)    |    |
 | ContentAPI | +-------+------+   #     +-----------------------+    |
-|            |         |          #                | (TCP/FS)      
+|            |         |          #                | (TCP/FS)
 | (Blink/v8) | +-------+------+   #     +-----------------------+    |
 |            | + JSON RPC srv +---------+ Client App (any Lang) |    | srv
 +------------+ +--------------+   #     +-----------------------+    |
@@ -179,18 +178,18 @@ are availble in the [docs/](https://github.com/breach/thrust/tree/master/docs)
 
 ##### Request for API
 
-- List of API needed by various projects on Thrust: 
+- List of API needed by various projects on Thrust:
 [Request for API](https://github.com/breach/thrust/wiki/Request-for-API)
 
-##### List of Thrust Users 
+##### List of Thrust Users
 
-- List of people relying on Thrust: 
+- List of people relying on Thrust:
 [List of Thrust Users](https://github.com/breach/thrust/wiki/List-of-Thrust-Users)
 
 ##### Thrust7.5k Contest
 
-- 7.5k max Browser implementation based on Thrust. *Coming soon*. Ping 
-dev@breach.cc if interested! (Credits to @morganrallen for the awesome idea) 
+- 7.5k max Browser implementation based on Thrust. *Coming soon*. Ping
+dev@breach.cc if interested! (Credits to @morganrallen for the awesome idea)
 
 ##### Getting Involved
 
@@ -218,14 +217,14 @@ dev@breach.cc if interested! (Credits to @morganrallen for the awesome idea)
 ***
 ## Building Thrust from Sources
 
-You will generally don't need to build thrust yourself. A binary version of 
-thrust should be automatically fetched by the library you're reyling on at 
+You will generally don't need to build thrust yourself. A binary version of
+thrust should be automatically fetched by the library you're reyling on at
 installation.
 
-To build thrust, you'll need to have `python 2.7.x` and `git` installed. You can 
+To build thrust, you'll need to have `python 2.7.x` and `git` installed. You can
 then boostrap the project with:
 ```
-./scripts/boostrap.py                                
+./scripts/boostrap.py
 ```
 
 Build both the `Release` and `Debug` targets with the following commands:
